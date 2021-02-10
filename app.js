@@ -141,6 +141,8 @@ receiver.router.use(express.urlencoded({
   extend: false
 }));
 
+receiver.router.use(express.static(path.join(__dirname, 'public')));
+
 receiver.router.use(express.json());
 
 //login token verify
@@ -518,60 +520,79 @@ app.view('view_1', async ({ ack, body, view, context }) => {
 
   })
 
+//  if (results) {
+    // DB save was successful
+  //  msg = 'Your submission was successful';
+  //} else {
+   // msg = 'There was an error with your submission';
+  //}
+
+  // Message the user
+  // try {
+  //   await app.client.chat.postMessage({
+  //    token: context.botToken,
+  //    channel: user,
+  //    text: data.value
+  //  });
+  // }
+  // catch (error) {
+  //   console.error(error);
+  // }
+
 });
 
 
 // Listen for users opening your App Home
-app.event('app_home_opened', async ({ event, client }) => {
-  try {
-    // Call views.publish with the built-in client
-    const result = await client.views.publish({
-      // Use the user ID associated with the event
-      user_id: event.user,
-      view: {
-        // Home tabs must be enabled in your app configuration page under "App Home"
-        "type": "home",
-        "blocks": [
-          {
-            "type": "section",
-            "text": {
-              "type": "mrkdwn",
-              "text": "*:wave:Welcome to Shucrew*"
-            }
-          },
-          {
-            "type": "section",
-            "text": {
-              "type": "mrkdwn",
-              "text": "Connect with Shucrew"
-            }
-          },
-          {
-            "type": "actions",
-            "elements": [
-              {
-                "type": "button",
-                "text": {
-                  "type": "plain_text",
-                  "emoji": true,
-                  "text": "Login"
-                },
-                "style": "primary",
-                "value": "login_schucrew",
-                "action_id": "approve_button"
-              },
-            ]
-          }
-        ]
-      }
-    });
+// app.event('app_home_opened', async ({ event, client }) => {
+//   try {
+//     // Call views.publish with the built-in client
+//     const result = await client.views.publish({
+//       // Use the user ID associated with the event
+//       user_id: event.user,
+//       view: {
+//         // Home tabs must be enabled in your app configuration page under "App Home"
+//         "type": "home",
+//         "blocks": [
+//           {
+//             "type": "section",
+//             "text": {
+//               "type": "mrkdwn",
+//               "text": "*:wave:Welcome to Shucrew*"
+//             }
+//           },
+//           {
+//             "type": "section",
+//             "text": {
+//               "type": "mrkdwn",
+//               "text": "Connect with Shucrew"
+//             }
+//           },
+//           {
+//             "type": "actions",
+//             "elements": [
+//               {
+//                 "type": "button",
+//                 "text": {
+//                   "type": "plain_text",
+//                   "emoji": true,
+//                   "text": "Login"
+//                 },
+//                 "style": "primary",
+//                 "value": "login_schucrew",
+//                 "action_id": "approve_button"
+//               },
+//             ]
+//           }
+//         ]
+//       }
+//     });
 
-    console.log(result);
-  }
-  catch (error) {
-    console.error(error);
-  }
-});
+//     console.log(result);
+//   }
+//   catch (error) {
+//     console.error(error);
+//   }
+// });
 
 (async () => {
     await app.start(process.env.PORT || 3000);

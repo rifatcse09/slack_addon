@@ -1,97 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shucrew ADDON</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" />
-    <style>
-        body {
-            box-sizing: border-box;
-        }
-
-        .login-form {
-            width: 340px;
-            margin: 50px auto;
-            font-size: 15px;
-        }
-        .login-form form {
-            margin-bottom: 15px;
-            background: #f7f7f7;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-        }
-    </style>
-
-    <script>       
-        document.addEventListener("DOMContentLoaded", function(event) {
-          let searchParams = new URLSearchParams(window.location.search);
-          let token = searchParams.get('client');
-          let team = searchParams.get('team');
-         
-          document.getElementById("token").value = token;
-          document.getElementById("team").value = team;
-        });
-
-        $(document).ready(function(){
-
-          $('form').on('submit', (e) => {
-              e.preventDefault();
-
-              const username = $('#username').val().trim();
-              const password = $('#password').val().trim();
-              const token = $('#token').val().trim();
-              const team = $('#team').val().trim();
-
-              const data = {
-                  username,
-                  password,
-                  token,
-                  team
-              };
-
-              console.log(data);
-
-              $.post('/tokenverify', data, function(response) {
-                  console.log(response.message);
-                  if(response.message != 'error'){
-                   window.location.href = response.message;
-                  }
-                 
-              })
-              .fail(function(response) {
-                    console.log('Error: ' + response);
-              });
-          });
-          // document.getElementById('#form-data').reset();
-        });
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="">
-        <div class="login-form">
-            <form action="" method="post">
-                <h2 class="text-center">Log in</h2>
-                <div class="form-group">
-                    <input  type="text" class="form-control" placeholder="Username"  required="required" name="username" id="username" />
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shucrew ADDON LOGIN</title>
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href='css/login.css' />
+        <link rel="stylesheet" href='css/common.css' />
+    </head>
+    <body class="login-page">
+        <div class="preloader"><div class="loader"></div></div>
+        <div class="container login-container">
+            <div class="login-box text-center">
+            
+                <div class="logo"><img src="img/logo@2x.jpg" alt="" srcset=""></div>
+                <div>
+                <p class="hidden error-show" role="alert">
+                    <span class="error-message"></span>
+                </p> 
                 </div>
-                <div class="form-group">
-                    <input  type="password" class="form-control" placeholder="Password" required="required" name="password" id="password" />
+                <form action="" method="post" class="login-form" id="form-login">
+                <h3 class="login-head">Log in</h3> 
+                <p class="login-subtitle">ログイン情報を入力してください。</p>
+                <div class="inner-form-group">
+                    <div class="form-group">
+                    <input type="text" placeholder="Eメール" name="username" id="username" autofocus="autofocus" class="form-control">
+                    </div> 
+                    <div class="form-group passwordField">
+                    <input placeholder="パスワード" type="password" name="password" id="password" class="form-control password"> 
+                
+                    <span class="eye">
+                        <img src="img/eye-off.png" class="eyeIcon">
+                        <img src="img/eye-on.png" class="eyeIcon" style="display: none;">
+                    </span>
+                    </div>
+                    <div class="form-group btn-container">
+                        <input type="hidden" name="token" id="token" value="" />
+                        <input type="hidden" name="team" id="team" value="" />
+                        <button type="submit" class="btn btn-login btn-block">ログイン</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">
-                    Log in
-                    </button>
-
-                    <input type="hidden" name="token" id="token" value="" />
-                    <input type="hidden" name="team" id="team" value="" />
-                </div>
-            </form>
+                </form>      
+            </div>
         </div>
-        </div>
-    </div>
     </body>
 </html>
