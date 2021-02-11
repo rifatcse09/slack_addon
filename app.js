@@ -5,6 +5,10 @@ const mysql = require('mysql');
 const path = require("path");
 const express = require("express");
 const qs = require('qs');
+const dotenv = require('dotenv');
+
+
+dotenv.config();
 
 
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET,endpoints: "/slack/events" });
