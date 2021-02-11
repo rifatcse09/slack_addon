@@ -12,11 +12,11 @@ dotenv.config();
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET,endpoints: "/slack/events" });
 
 var con = mysql.createConnection({
-  host: "webhawks.oceanize.co.jp",
-  port: 3306,
-  user: "rocket",
-  password: "fuYBMju5LyUdjf2m",
-  database: "slackdemo"
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 con.connect(function(err) {
