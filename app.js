@@ -5,6 +5,8 @@ const mysql = require('mysql');
 const path = require("path");
 const express = require("express");
 const qs = require('qs');
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET,endpoints: "/slack/events" });
@@ -120,7 +122,7 @@ receiver.app.get('/oauth_redirect', async (req, res) => {
               }
       
             dbFunction().then((pass) => {
-                res.redirect(`${process.env.SERVER_API}/login?client=${pass}&team=${data.team.id}`);
+                res.redirect(`${process.env.SERVER_URL}/login?client=${pass}&team=${data.team.id}`);
       
               }).catch(e => console.log(e));
           }
