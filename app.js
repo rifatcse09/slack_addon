@@ -170,7 +170,7 @@ async function makeHeadRequest(username, password, token) {
   await axios.post(`${process.env.API_URL}/api/token`, {
       client_id:2,
       client_secret:`${process.env.CLIENT_SECRET}`,
-      client_type:"Android",
+      client_type:"Slack",
       grant_type:"password",
       password:password,
       scope:"*",
