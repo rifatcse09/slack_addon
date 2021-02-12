@@ -49,7 +49,7 @@ $(document).ready(function(){
 
     console.log(data);
 
-    $.post('/slack/tokenverify', data, function(response) {
+    $.post('/tokenverify', data, function(response) {
         console.log(response.message);
         if(response.message != 'error'){
         window.location.href = response.message;
