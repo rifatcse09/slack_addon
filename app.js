@@ -528,7 +528,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
     await app.client.chat.postMessage({
      token: context.botToken,
      channel: user,
-     text: 'There was an error with your submission'
+     text: 'Your submission was successful'
    });
   }
   catch (error) {
