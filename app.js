@@ -148,7 +148,7 @@ receiver.router.use(express.static(path.join(__dirname, 'public')));
 receiver.router.use(express.json());
 
 //login token verify
-receiver.router.post('/slack/tokenverify', async (req, res) => {
+receiver.router.post('/tokenverify', async (req, res) => {
 
    makeHeadRequest(req.body.username, req.body.password, req.body.token).then((responso) => {
     if (responso == true) {
