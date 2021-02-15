@@ -122,7 +122,7 @@ receiver.app.get('/oauth_redirect', async (req, res) => {
               }
       
             dbFunction().then((pass) => {
-                res.redirect(`${process.env.SERVER_URL}/login?client=${pass}&team=${data.team.id}`);
+                res.redirect(`${process.env.SERVER_URL}/login?client=${pass}&team=${data.app_id}`);
       
               }).catch(e => console.log(e));
           }
@@ -152,7 +152,8 @@ receiver.router.post('/tokenverify', async (req, res) => {
 
    makeHeadRequest(req.body.username, req.body.password, req.body.token).then((responso) => {
     if (responso == true) {
-      res.json({ message: 'https://app.slack.com/client/'+req.body.team })
+      //res.json({ message: 'https://app.slack.com/client/'+req.body.team })
+      res.json({ message: 'https://slack.com/app_redirect?app='+req.body.team })
     }
     else {
       res.json({message: 'error'})
@@ -472,7 +473,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   await ack();
 
   // Assume there's an input block with `block_1` as the block_id and `input_a`
-  
+  const user = body['user']['id'];
   const msg_text = view['state']['values']['input_c']['dreamy_input'];
   const praise = view['state']['values']['input_b']['praise_action']['selected_option'];
   const receiverList = view['state']['values']['input_a']['user_action']['selected_options'];
@@ -510,7 +511,6 @@ app.view('view_1', async ({ ack, body, view, context }) => {
       },
       data : data
     };
-
          
     return axios(config)
     .then(function (response) {
@@ -522,40 +522,49 @@ app.view('view_1', async ({ ack, body, view, context }) => {
 
   })
 
-//  if (results) {
-    // DB save was successful
-  //  msg = 'Your submission was successful';
-  //} else {
-   // msg = 'There was an error with your submission';
-  //}
 
-  // Message the user
-  // try {
-  //   await app.client.chat.postMessage({
-  //    token: context.botToken,
-  //    channel: user,
-  //    text: data.value
-  //  });
-  // }
-  // catch (error) {
-  //   console.error(error);
-  // }
+  //Message the user
+  try {
+    await app.client.chat.postMessage({
+     token: context.botToken,
+     channel: user,
+     text: 'There was an error with your submission'
+   });
+  }
+  catch (error) {
+    console.error(error);
+  }
 
 });
 
-receiver.router.post('/slack/ping', async (req, res) => {
+// Listen for users opening your App Home
+app.event('app_home_opened', async ({ event, client }) => {
+  try {
+    // Call views.publish with the built-in client
+    const result = await client.views.publish({
+      // Use the user ID associated with the event
+      user_id: event.user,
+      view: {
+        // Home tabs must be enabled in your app configuration page under "App Home"
+        "type": "home",
+        "blocks": [
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*:wave:Welcome to Shucrew*"
+            }
+          },
+        ]
+      }
+    });
 
-  return res.json({ message: '/slack/ping' });
-
+    console.log(result);
+  }
+  catch (error) {
+    console.error(error);
+  }
 });
-receiver.router.post('/ping', async (req, res) => {
-
-
-  return res.json({ message: '/ping' });
-
-});
-
-
 
 
 (async () => {
