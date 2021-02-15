@@ -543,58 +543,20 @@ app.view('view_1', async ({ ack, body, view, context }) => {
 
 });
 
+receiver.router.post('/slack/ping', async (req, res) => {
 
-// Listen for users opening your App Home
-// app.event('app_home_opened', async ({ event, client }) => {
-//   try {
-//     // Call views.publish with the built-in client
-//     const result = await client.views.publish({
-//       // Use the user ID associated with the event
-//       user_id: event.user,
-//       view: {
-//         // Home tabs must be enabled in your app configuration page under "App Home"
-//         "type": "home",
-//         "blocks": [
-//           {
-//             "type": "section",
-//             "text": {
-//               "type": "mrkdwn",
-//               "text": "*:wave:Welcome to Shucrew*"
-//             }
-//           },
-//           {
-//             "type": "section",
-//             "text": {
-//               "type": "mrkdwn",
-//               "text": "Connect with Shucrew"
-//             }
-//           },
-//           {
-//             "type": "actions",
-//             "elements": [
-//               {
-//                 "type": "button",
-//                 "text": {
-//                   "type": "plain_text",
-//                   "emoji": true,
-//                   "text": "Login"
-//                 },
-//                 "style": "primary",
-//                 "value": "login_schucrew",
-//                 "action_id": "approve_button"
-//               },
-//             ]
-//           }
-//         ]
-//       }
-//     });
+  return res.json({ message: '/slack/ping' });
 
-//     console.log(result);
-//   }
-//   catch (error) {
-//     console.error(error);
-//   }
-// });
+});
+receiver.router.post('/ping', async (req, res) => {
+
+
+  return res.json({ message: '/ping' });
+
+});
+
+
+
 
 (async () => {
     await app.start(process.env.PORT || 3000);
