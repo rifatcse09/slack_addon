@@ -32,31 +32,49 @@ const installations = [
         botUserId: '', // get's from oauth
         botToken: '', // get's from oauth
         botId: '' // get's from users.info with BOT_USER_ID
-        // teamId: 'T01E1PWMJVD', // get's from oauth
-        // botToken: 'xoxb-1477812732999-1530308080512-eSTywkphZRyuu2IXZgXupF5L',
-        // botId: 'B01EWKS9PQB',
-        // botUserId: 'U01FL922CF2'
     }
 ];
 
+// get auth info from db
+async function authInfo(teamId) {
+
+  return new Promise(function(resolve, reject) {
+    // The Promise constructor should catch any errors thrown on
+    // this tick. Alternately, try/catch and reject(err) on catch.
+    
+    var sql = `SELECT * FROM slack_users
+              WHERE team_id = '${teamId}'
+              ORDER BY id DESC LIMIT 1`;
+
+    con.query(sql, function (err, result) {
+      if (err)  return reject(err);
+      
+      let resultData = JSON.parse(JSON.stringify(result));
+     
+      resolve({botToken: resultData[0]['bot_token'], botId: resultData[0]['bot_id'], botUserId: resultData[0]['bot_user_id']});
+    });    
+  });
+
+}
 
 const authorizeFn = async ({ teamId, enterpriseId }) => {
   // Fetch team info from database
+  return await authInfo(teamId);
   
-    for (const team of installations) {
-      console.log('team = ', team);
-      // Check for matching teamId and enterpriseId in the installations array
-      if ((team.teamId === teamId)) {
-          // This is a match. Use these installation credentials.
-          return {
-              // You could also set userToken instead
-              botToken: team.botToken,
-              botId: team.botId,
-              botUserId: team.botUserId
-          };
-      }
+    // for (const team of installations) {
+    //   console.log('team = ', team);
+    //   // Check for matching teamId and enterpriseId in the installations array
+    //   if ((team.teamId === teamId)) {
+    //       // This is a match. Use these installation credentials.
+    //       return {
+    //           // You could also set userToken instead
+    //           botToken: team.botToken,
+    //           botId: team.botId,
+    //           botUserId: team.botUserId
+    //       };
+    //   }
 
-    }
+    // }
  
   throw new Error('No matching authorizations');
 };
