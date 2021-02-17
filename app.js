@@ -122,11 +122,12 @@ receiver.app.get('/oauth_redirect', async (req, res) => {
                 hash = crypto.getHashes(); 
                 
                 // Create hash of SHA1 type 
-                x = "OCBLAB"
+                //x = "OCBLAB"
         
                 // 'digest' is the output of hash function containing  
                 // only hexadecimal digits 
-                hashPwd = crypto.createHash('sha1').update(x).digest('hex'); 
+                //hashPwd = crypto.createHash('sha1').update(x).digest('hex'); 
+                hashPwd = crypto.randomBytes(20).toString('hex');
                 const created_at = getDateformetJP(new Date());
                
                 var sql = `INSERT INTO slack_users (auth_user_token, team_id, team_name, authed_user_id, login_url_token, app_id, bot_token, bot_id, bot_user_id, created_at) 
@@ -170,7 +171,6 @@ receiver.router.post('/tokenverify', async (req, res) => {
 
    makeHeadRequest(req.body.username, req.body.password, req.body.token).then((responso) => {
     if (responso == true) {
-      //res.json({ message: 'https://app.slack.com/client/'+req.body.team })
       res.json({ message: 'https://slack.com/app_redirect?app='+req.body.team })
     }
     else {
@@ -411,7 +411,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
               type: 'section',
               text: {
                 type: 'mrkdwn',
-                text: 'Welcome to Shucrew'
+                text: '感謝の気持ちを伝えましょう'
               },
             },
            
@@ -422,7 +422,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                 "type": "multi_static_select",
                 "placeholder": {
                   "type": "plain_text",
-                  "text": "Select an item",
+                  "text": "ユーザーを検索してください",
                   "emoji": true
                 },
                 "options": userList['user'],
@@ -441,7 +441,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                 "type": "static_select",
                 "placeholder": {
                   "type": "plain_text",
-                  "text": "Select an item",
+                  "text": "メニューから選んでください",
                   "emoji": true
                 },
                 "options": userList['praise'],
