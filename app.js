@@ -286,7 +286,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
         },
         "close": {
           "type": "plain_text",
-          "text": "Cancel"
+          "text": "キャンセル"
         },
         "blocks": [
           {
@@ -307,15 +307,13 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
     userInfo((body['user']['id'])).then(result => {
     
       return axios.all([
-        axios.get(`${process.env.API_URL}/api/users`, {
-          company_id: result[0]['company_id'],
+        axios.get(`${process.env.API_URL}/api/users?authority=USER&company_id=${result[0]['company_id']}&limit=9999999`, {
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
               'Authorization': `Bearer ${result[0]['access_token']}`
           }
         }),
         axios.get(`${process.env.API_URL}/api/praise`, {
-          limit: 99999,
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
               'Authorization': `Bearer ${result[0]['access_token']}`
@@ -463,13 +461,21 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
               element: {
                 type: 'plain_text_input',
                 action_id: 'dreamy_input',
-                multiline: true
+                multiline: true,
+                placeholder: {
+                  type: "plain_text",
+                  text: "入力してください",
+                },
               }
             }    
           ],
+          close: {
+            type: "plain_text",
+            text: "キャンセル",
+          },
           submit: {
             type: 'plain_text',
-            text: 'Submit',      
+            text: '送信',      
           }
         }
       });
