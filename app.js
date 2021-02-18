@@ -548,10 +548,11 @@ app.view('view_1', async ({ ack, body, view, context }) => {
 
 
   //Message the user
+  const channelId = msg_data['channel']['id'];
   try {
     await app.client.chat.postMessage({
      token: context.botToken,
-     channel: user,
+     channel: channelId,
      text: 'Your submission was successful'
    });
   }
