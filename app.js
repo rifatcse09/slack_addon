@@ -488,7 +488,6 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
           type: 'modal',
           // View identifier
           callback_id: 'view_1',
-          private_metadata: JSON.stringify(body),
           title: {
             type: 'plain_text',
             text: 'Shucrew'
