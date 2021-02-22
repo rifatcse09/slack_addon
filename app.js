@@ -480,6 +480,52 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
         }
       });
     }).catch(error => {
+      client.views.update({
+
+        view_id: viewId,
+        // View payload
+        view: {
+          type: 'modal',
+          // View identifier
+          callback_id: 'view_1',
+          title: {
+            type: 'plain_text',
+            text: 'Shucrew'
+          },
+          "blocks": [
+           {
+             "type": "divider"
+           },
+           {
+             "type": "section",
+             "text": {
+               "type": "mrkdwn",
+               "text": "Click Connect button to login"
+             },
+             "accessory": {
+               "type": "button",
+               "text": {
+                 "type": "plain_text",
+                 "text": "Connect to Shucrew",
+                 "emoji": true
+               },
+               "value": "connect_shucew",
+               "style":"primary",
+               "url": "https://slack.com/oauth/v2/authorize?client_id=1477812732999.1506294905634&scope=chat:write,commands,im:read,users:read,workflow.steps:execute,channels:read&user_scope=channels:history,channels:read,users:write,chat:write",
+               "action_id": "button-action"
+             }
+           }
+         ],
+          close: {
+            type: "plain_text",
+            text: "キャンセル",
+          },
+          submit: {
+            type: 'plain_text',
+            text: '送信',      
+          }
+        }
+      });
       console.log('We have encountered an Error!',error); // Log an error
     });
 
