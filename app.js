@@ -500,13 +500,13 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
              "type": "section",
              "text": {
                "type": "mrkdwn",
-               "text": "Click Connect button to login"
+               "text": "まずはShucrewにログインしてください！"
              },
              "accessory": {
                "type": "button",
                "text": {
                  "type": "plain_text",
-                 "text": "Connect to Shucrew",
+                 "text": "ログイン",
                  "emoji": true
                },
                "value": "connect_shucew",
@@ -516,14 +516,14 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
              }
            }
          ],
-          close: {
-            type: "plain_text",
-            text: "キャンセル",
-          },
-          submit: {
-            type: 'plain_text',
-            text: '送信',      
-          }
+          // close: {
+          //   type: "plain_text",
+          //   text: "キャンセル",
+          // },
+          // submit: {
+          //   type: 'plain_text',
+          //   text: '送信',      
+          // }
         }
       });
       console.log('We have encountered an Error!',error); // Log an error
