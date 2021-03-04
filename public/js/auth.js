@@ -9,6 +9,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 $(document).ready(function(){
 
+  // input validation
+  $('#form-login').on('input' , function() {
+    var email = $("#username").val();
+    var password = $("#password").val();
+
+    if((isValidEmailAddress(email) && (email != 0)) && (password != 0)){
+      $('.btn.btn-login').prop("disabled", false);
+    }else{
+      $('.btn.btn-login').prop("disabled", true);
+    }
+  });
+
+  // email validation
+  function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    return pattern.test(emailAddress);
+  }
+
+  // form submit and validation
   $('form').on('submit', (e) => {
     e.preventDefault();
     $(".error-show").addClass("hidden");

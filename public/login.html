@@ -15,37 +15,47 @@
     <body class="login-page">
         <div class="preloader"><div class="loader"></div></div>
         <div class="container login-container">
-            <div class="login-box text-center">
+            <div class="row login-content">
+              <div class="col-md-5 col-xl-5 left-site">
             
-                <div class="logo"><img src="img/logo@2x.jpg" alt="" srcset=""></div>
-                <div>
-                <p class="hidden error-show" role="alert">
-                    <span class="error-message"></span>
-                </p> 
-                </div>
-                <form action="" method="post" class="login-form" id="form-login">
-                <h3 class="login-head">Log in</h3> 
-                <p class="login-subtitle">ログイン情報を入力してください。</p>
-                <div class="inner-form-group">
-                    <div class="form-group">
-                    <input type="text" placeholder="Eメール" name="username" id="username" autofocus="autofocus" class="form-control">
-                    </div> 
-                    <div class="form-group passwordField">
-                    <input placeholder="パスワード" type="password" name="password" id="password" class="form-control password"> 
-                
-                    <span class="eye">
-                        <img src="img/eye-off.png" class="eyeIcon">
-                        <img src="img/eye-on.png" class="eyeIcon" style="display: none;">
-                    </span>
-                    </div>
-                    <div class="form-group btn-container">
-                        <input type="hidden" name="token" id="token" value="" />
-                        <input type="hidden" name="team" id="team" value="" />
-                        <button type="submit" class="btn btn-login btn-block">ログイン</button>
-                    </div>
-                </div>
-                </form>      
+              </div>
+              <div class="col-md-7 col-xl-7">
+                  <div class="login-box text-center">          
+                      <div class="logo"><img src="img/logo@2x.jpg" alt="" srcset=""></div>
+                      <div>
+                      </div>
+                      <form action="" method="post" class="login-form" id="form-login">
+                        <h3 class="login-head">Log in</h3> 
+                        <div class="login-form-top-label">
+                            <p class="login-subtitle">ログイン情報を入力してください。</p>
+                            <p class="hidden error-show" role="alert">
+                                <span class="error-message"></span>
+                            </p> 
+                        </div>
+                       
+                        <div class="inner-form-group">
+                            <div class="form-group">
+                            <input type="text" placeholder="Eメール" name="username" id="username" autofocus="autofocus" class="form-control">
+                            </div> 
+                            <div class="form-group passwordField">
+                            <input placeholder="パスワード" type="password" name="password" id="password" class="form-control password"> 
+                        
+                            <span class="eye">
+                                <img src="img/eye-off.png" class="eyeIcon">
+                                <img src="img/eye-on.png" class="eyeIcon" style="display: none;">
+                            </span>
+                            </div>
+                            <div class="form-group btn-container">
+                                <input type="hidden" name="token" id="token" value="" />
+                                <input type="hidden" name="team" id="team" value="" />
+                                <button type="submit" class="btn btn-login btn-block" disabled>ログイン</button>
+                            </div>
+                        </div>
+                      </form>      
+                  </div>
+              </div>
             </div>
+          
         </div>
     </body>
 </html>
