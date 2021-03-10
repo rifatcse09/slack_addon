@@ -511,7 +511,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                },
                "value": "connect_shucew",
                "style":"primary",
-               "url": "https://slack.com/oauth/v2/authorize?client_id=1477812732999.1506294905634&scope=chat:write,commands,im:read,users:read,workflow.steps:execute,channels:read&user_scope=channels:history,channels:read,users:write,chat:write",
+               "url": "https://slack.com/oauth/v2/authorize?client_id=1477812732999.1763382974512&scope=app_mentions:read,channels:history,channels:manage,channels:read,chat:write,chat:write.customize,chat:write.public,commands,im:history,im:read,mpim:history,users:read,workflow.steps:execute&user_scope=channels:history,channels:read,channels:write,chat:write,users:read,users:write",
                "action_id": "button-action"
              }
            }
