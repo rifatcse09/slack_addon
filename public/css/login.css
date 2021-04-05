@@ -24,6 +24,32 @@ button[disabled]{
 }
 
 
+@media screen and (max-width: 767px) {
+  .left-site {
+    display: none;
+  }
+  .login-subtitle {
+    display: none;
+  }
+  .login-box{
+    width: 100%;
+  }
+  .login-form-top-label {
+    margin-bottom: 5px;
+  }
+  .bottom-image {
+    padding: 0px !important;
+    margin-top: 35px;
+    display: block !important;
+    
+  }
+  .bottom-image img{
+     width:100% 
+  }
+}
+.bottom-image {
+  display: none;
+}
 ::-webkit-input-placeholder {
   color: #333333 !important;
   opacity: 0.5 !important;
