@@ -1,8 +1,10 @@
 .login-container{display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:100%;padding:0px;}.login-content{width:100%;height:100vh;}
 .left-site{
   background-image: url(../img/signin_illust_pc.png);
-  background-size: cover;
+  background-size: 100%;
   padding: 0;
+  background-repeat: no-repeat;
+  background-color: #01a0e9;
 }
 .login-box {
   margin:0 auto;
@@ -20,4 +22,54 @@ button[disabled]{
   background-color: #b2e2f8 !important;
   color: #ffffff !important;
 }
-.login-container .login-box .login-form .login-head{font-family:"GalanoGrotesqueDEMO";font-size:45px;font-weight:700;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:2.57px;color:#424242;border:none;margin-bottom:0;padding-bottom:30px}.login-container .login-box .login-form .login-subtitle{font-family:"HiraginoSans-W3";font-size:16px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:.89px;color:#424242;text-align:center}.login-container .login-box .login-form .inner-form-group .form-group{margin-bottom:1rem}.login-container .login-box .login-form .inner-form-group .form-group .form-control{text-align:left;padding:0;font-size:16px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:1.45px;color:#333;border-radius:0;border:none;border-bottom:1px solid rgba(51,51,51,0.5)}.login-container .login-box .login-form .inner-form-group .form-group .password{min-height:25px}.login-container .login-box .login-form .inner-form-group .form-group .utility{display:flex;padding:1px;justify-content:space-between;align-items:center}.login-container .login-box .login-form .inner-form-group .form-group .utility .animated-checkbox .lblTxt{opacity:.5;font-family:"HiraginoSans-W3";font-size:11px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:1px;text-align:center;color:#333}.login-container .login-box .login-form .inner-form-group .form-group .utility .forgetPass{opacity:.5;font-family:"HiraginoSans-W3";font-size:11px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:1px;text-align:center;color:#333}.login-container .login-box .login-form .inner-form-group .form-group .btn-login{font-size:16px;border-radius:3px;box-shadow:0 0 4px 0 rgba(0,0,0,0.1);background-color:#01a0e9;max-width:100%;margin:70px auto 0;color:#fff;padding:11px 0}.login-container .login-box .login-form .inner-form-group .passwordField{position:relative;margin-top:60px}.login-container .login-box .login-form .inner-form-group .passwordField span.eye{position:absolute;top:0;right:0;display:block;overflow:hidden;width:34px;background:#fff;padding:0 2px;height:23px}.login-container .login-box label{color:#666;font-weight:700}.login-container .login-box .btn-container{margin-bottom:0}.login-container .login-box .logo{margin-bottom:71px;    margin-top: 24%;}.login-container .login-box .logo img{width:155px}.login-container .login-box .error-message{color:red}.btn-block{display:block;width:100%}
+
+
+@media screen and (max-width: 767px) {
+  .left-site {
+    display: none;
+  }
+  .login-subtitle {
+    display: none;
+  }
+  .login-box{
+    width: 100%;
+  }
+  .login-form-top-label {
+    margin-bottom: 5px;
+  }
+  .bottom-image {
+    padding: 0px !important;
+    margin-top: 35px;
+    display: block !important;
+    
+  }
+  .bottom-image img{
+     width:100% 
+  }
+}
+.bottom-image {
+  display: none;
+}
+::-webkit-input-placeholder {
+  color: #333333 !important;
+  opacity: 0.5 !important;
+}
+
+::-moz-placeholder {
+  color: #333333 !important;
+  opacity: 0.5 !important;
+}
+
+::-ms-placeholder {
+  color: #333333 !important;
+  opacity: 0.5 !important;
+}
+
+::placeholder {
+  color: #333333 !important;
+  opacity: 0.5 !important;
+}
+
+
+
+.login-container .login-box .login-form .login-head{font-family:"GalanoGrotesqueDEMO";font-size:45px;font-weight:700;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:2.57px;color:#424242;border:none;margin-bottom:0;padding-bottom:30px}.login-container .login-box .login-form .login-subtitle{font-family:"HiraginoSans-W3";font-size:16px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:.89px;color:#424242;text-align:center}.login-container .login-box .login-form .inner-form-group .form-group{margin-bottom:1rem}.login-container .login-box .login-form .inner-form-group .form-group .form-control{text-align:left;padding:9px;font-size:16px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:1.45px;color:#333;border-radius:0;border:none;border-bottom:2px solid rgba(51,51,51,0.5)}.login-container .login-box .login-form .inner-form-group .form-group .password{min-height:25px}.login-container .login-box .login-form .inner-form-group .form-group .utility{display:flex;padding:1px;justify-content:space-between;align-items:center}.login-container .login-box .login-form .inner-form-group .form-group .utility .animated-checkbox .lblTxt{opacity:.5;font-family:"HiraginoSans-W3";font-size:11px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:1px;text-align:center;color:#333}.login-container .login-box .login-form .inner-form-group .form-group .utility .forgetPass{opacity:.5;font-family:"HiraginoSans-W3";font-size:11px;font-weight:400;font-stretch:normal;font-style:normal;line-height:normal;letter-spacing:1px;text-align:center;color:#333}.login-container .login-box .login-form .inner-form-group .form-group .btn-login{font-size:16px;border-radius:3px;box-shadow:none !important;background-color:#01a0e9;max-width:100%;margin:70px auto 0;color:#fff;padding:11px 0}.login-container .login-box .login-form .inner-form-group .passwordField{position:relative;margin-top:60px}.login-container .login-box .login-form .inner-form-group .passwordField span.eye{position:absolute;top:0;right:0;display:block;overflow:hidden;width:34px;background:#fff;padding:0 2px;height:23px}.login-container .login-box label{color:#666;font-weight:700}.login-container .login-box .btn-container{margin-bottom:0}.login-container .login-box .logo{margin-bottom:71px;    margin-top: 24%;}.login-container .login-box .logo img{width:155px}.login-container .login-box .error-message{color:red}.btn-block{display:block;width:100%}
