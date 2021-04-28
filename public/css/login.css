@@ -68,6 +68,19 @@ input:-webkit-autofill {
   .bottom-image img{
      width:100% 
   }
+  .bottom-text {
+    display: block !important;
+    text-align: center;
+    margin: 0 auto;
+    color: #333333;
+    padding-top: 20px;
+    font-size: 12px;
+    font-family:"HiraginoSans-W3";
+    opacity: 0.5
+  }
+}
+.bottom-text {
+  display: none;
 }
 .bottom-image {
   display: none;
