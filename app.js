@@ -301,7 +301,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
     });
 
     const viewId = res.view.id;
-    await new Promise(r => setTimeout(r, 4000));
+    await new Promise(r => setTimeout(r, 2000));
     
     // get user info
     userInfo((body['user']['id'])).then(result => {
