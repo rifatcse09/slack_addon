@@ -307,7 +307,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
     userInfo((body['user']['id'])).then(result => {
     
       return axios.all([
-        axios.get(`${process.env.API_URL}/api/users?authority=USER&company_id=${result[0]['company_id']}&limit=9999999`, {
+        axios.get(`${process.env.API_URL}/api/users?authority=USER&addon=true&company_id=${result[0]['company_id']}&limit=9999999`, {
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
               'Authorization': `Bearer ${result[0]['access_token']}`
