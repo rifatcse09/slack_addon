@@ -301,7 +301,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
     });
 
     const viewId = res.view.id;
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 1000));
     
     // get user info
     userInfo((body['user']['id'])).then(result => {
@@ -387,7 +387,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
 
     }).then(userList => {
  
-      body['parent_msg_username'] = parent_msg_username;
+      body['parent_msg_username'] = parent_msg_username.substr(0, 29999);
       
       // view open with api data
       client.views.update({
@@ -432,7 +432,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                 "emoji": true
               }
             },
-             {
+            {
               "type": "input",
               "block_id": "input_b",
               "element": {
@@ -516,14 +516,6 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
              }
            }
          ],
-          // close: {
-          //   type: "plain_text",
-          //   text: "キャンセル",
-          // },
-          // submit: {
-          //   type: 'plain_text',
-          //   text: '送信',      
-          // }
         }
       });
       console.log('We have encountered an Error!',error); // Log an error
@@ -614,36 +606,6 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   }
 
 });
-
-// Listen for users opening your App Home
-app.event('app_home_opened', async ({ event, client }) => {
-  try {
-    // Call views.publish with the built-in client
-    const result = await client.views.publish({
-      // Use the user ID associated with the event
-      user_id: event.user,
-      view: {
-        // Home tabs must be enabled in your app configuration page under "App Home"
-        "type": "home",
-        "blocks": [
-          {
-            "type": "section",
-            "text": {
-              "type": "mrkdwn",
-              "text": "*:wave:Welcome to Shucrew*"
-            }
-          },
-        ]
-      }
-    });
-
-    console.log(result);
-  }
-  catch (error) {
-    console.error(error);
-  }
-});
-
 
 (async () => {
     await app.start(process.env.PORT || 3000);
