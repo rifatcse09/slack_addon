@@ -263,6 +263,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
    
     // default message user
     const messageUserId = body['message']['user'];
+    const parentText = body['message']['text'];
     let parent_msg_username;
     try {
       // Call the users.info method using the WebClient
@@ -387,7 +388,8 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
 
     }).then(userList => {
  
-      body['parent_msg_username'] = parent_msg_username.substr(0, 29999);
+      body['parent_msg_username'] = parent_msg_username;
+      body['message']['text'] = parentText.substr(0, 29999);
       
       // view open with api data
       client.views.update({
