@@ -562,6 +562,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
     'comments_date': comment_date,
     'slack_post_user_name': msg_data['parent_msg_username'],
     'slack_post': msg_data['message']['text'],
+    'post_type': 0,
     'slack_post_date': msg_date 
     });
 
