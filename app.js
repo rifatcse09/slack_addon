@@ -470,29 +470,29 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                 },
               }
             },  
-            {
-              "type": "input",
-              "block_id": "input_d",
-              "element": {
-                "type": "checkboxes",
-                "options": [
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "非公開（このユーザーにだけ表示します）",
-                      "emoji": true
-                    },
-                    "value": "1"
-                  }
-                ],
-                "action_id": "post-type"
-              },
-              "label": {
-                "type": "plain_text",
-                "text": "Label",
-                "emoji": true
-              }
-            }
+            // {
+            //   "type": "input",
+            //   "block_id": "input_d",
+            //   "element": {
+            //     "type": "checkboxes",
+            //     "options": [
+            //       {
+            //         "text": {
+            //           "type": "plain_text",
+            //           "text": "非公開（このユーザーにだけ表示します）",
+            //           "emoji": true
+            //         },
+            //         "value": "1"
+            //       }
+            //     ],
+            //     "action_id": "post-type"
+            //   },
+            //   "label": {
+            //     "type": "plain_text",
+            //     "text": "Label",
+            //     "emoji": true
+            //   }
+            // }
           ],
           close: {
             type: "plain_text",
@@ -564,10 +564,10 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   const msg_text = view['state']['values']['input_c']['dreamy_input'];
   const praise = view['state']['values']['input_b']['praise_action']['selected_option'];
   const receiverList = view['state']['values']['input_a']['user_action']['selected_options'];
-  const post_type = view['state']['values']['input_d']['post_type']['selected_options'];
-  if (post_type == null) {
-    post_type = 0;
-  }
+ // const post_type = view['state']['values']['input_d']['post_type']['selected_options'];
+  // if (post_type == null) {
+  //   post_type = 0;
+  // }
   const receiverId = [];
   Object.values(receiverList).forEach(data => { receiverId.push(data.value); });
   const receiverParam = receiverId.toString();
@@ -589,7 +589,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
     'comments_date': comment_date,
     'slack_post_user_name': msg_data['parent_msg_username'],
     'slack_post': msg_data['message']['text'],
-    'post_type': post_type,
+    'post_type': 0,
     'slack_post_date': msg_date 
     });
 
