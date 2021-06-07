@@ -476,6 +476,13 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
               "optional": true,
               "element": {
                 "type": "checkboxes",
+                "initial_options": [{
+                  "value": "0",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "非公開（このユーザーにだけ表示します）"
+                  }
+                }],
                 "options": [
                   {
                     "text": {
