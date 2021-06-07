@@ -565,10 +565,10 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   const msg_text = view['state']['values']['input_c']['dreamy_input'];
   const praise = view['state']['values']['input_b']['praise_action']['selected_option'];
   const receiverList = view['state']['values']['input_a']['user_action']['selected_options'];
-  const post_type = view['state']['values']['input_d']['post_type']['value'];
+  const post_type = view['state']['values']['input_d']['post_type']['selected_options'];
  //console.log(view['state'])
-  console.log('post_type',post_type);
-  if (post_type) {
+  console.log('post_type',post_type.value);
+  if (post_type.value) {
     post_type = 0;
   } else {
     post_type = 1;
