@@ -570,7 +570,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   var post_type;
  //console.log(view['state'])
   console.log('post_type_action',post_type_view_action);
-  if (post_type_view.value) {
+  if (post_type_view.length == 0) {
     post_type = 0;
   } else {
     post_type = 1;
