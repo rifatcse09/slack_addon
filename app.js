@@ -488,11 +488,11 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                 ],
                 "action_id": "post_type"
               },
-              "label": {
-                "type": "plain_text",
-                "text": "Label",
-                "emoji": true
-              }
+              // "label": {
+              //   "type": "plain_text",
+              //   "text": "Label",
+              //   "emoji": true
+              // }
             }
           ],
           close: {
@@ -569,6 +569,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   if (post_type == null) {
     post_type = 0;
   }
+  console.log('post_type=',post_type);
   const receiverId = [];
   Object.values(receiverList).forEach(data => { receiverId.push(data.value); });
   const receiverParam = receiverId.toString();
@@ -590,7 +591,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
     'comments_date': comment_date,
     'slack_post_user_name': msg_data['parent_msg_username'],
     'slack_post': msg_data['message']['text'],
-    'post_type': post_type,
+    'post_type': 1,
     'slack_post_date': msg_date 
     });
 
