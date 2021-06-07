@@ -476,13 +476,6 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
               "optional": true,
               "element": {
                 "type": "checkboxes",
-                "initial_options": [{
-                  "value": "0",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "非公開（このユーザーにだけ表示します）"
-                  }
-                }],
                 "options": [
                   {
                     "text": {
@@ -573,9 +566,10 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   const praise = view['state']['values']['input_b']['praise_action']['selected_option'];
   const receiverList = view['state']['values']['input_a']['user_action']['selected_options'];
   const post_type_view = view['state']['values']['input_d']['post_type']['selected_options'];
+  const post_type_view_action = view['state']['values']['input_d']['post_type'];
   var post_type;
  //console.log(view['state'])
-  console.log('post_type',post_type_view.value);
+  console.log('post_type_action',post_type_view_action);
   if (post_type_view.value) {
     post_type = 0;
   } else {
