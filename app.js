@@ -488,11 +488,11 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                 ],
                 "action_id": "post_type"
               },
-              "label": {
-                "type": "plain_text",
-                "text": "Label",
-                "emoji": true
-              }
+              // "label": {
+              //   "type": "plain_text",
+              //   "text": "Label",
+              //   "emoji": true
+              // }
             }
           ],
           close: {
@@ -566,8 +566,10 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   const praise = view['state']['values']['input_b']['praise_action']['selected_option'];
   const receiverList = view['state']['values']['input_a']['user_action']['selected_options'];
   const post_type = view['state']['values']['input_d']['post_type']['selected_options'];
-  if (post_type == null) {
+  if (post_type) {
     post_type = 0;
+  } else {
+    post_type = 1;
   }
   const receiverId = [];
   Object.values(receiverList).forEach(data => { receiverId.push(data.value); });
