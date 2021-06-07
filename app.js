@@ -566,10 +566,11 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   const praise = view['state']['values']['input_b']['praise_action']['selected_option'];
   const receiverList = view['state']['values']['input_a']['user_action']['selected_options'];
   const post_type = view['state']['values']['input_d']['post_type']['selected_options'];
-  if (post_type == null) {
+  if (post_type) {
     post_type = 0;
+  } else {
+    post_type = 1;
   }
-  console.log('post_type=',post_type);
   const receiverId = [];
   Object.values(receiverList).forEach(data => { receiverId.push(data.value); });
   const receiverParam = receiverId.toString();
@@ -591,7 +592,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
     'comments_date': comment_date,
     'slack_post_user_name': msg_data['parent_msg_username'],
     'slack_post': msg_data['message']['text'],
-    'post_type': 1,
+    'post_type': post_type,
     'slack_post_date': msg_date 
     });
 
