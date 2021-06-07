@@ -487,7 +487,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
                   }
                 ],
                 "action_id": "post_type"
-              },
+              }
               // "label": {
               //   "type": "plain_text",
               //   "text": "Label",
