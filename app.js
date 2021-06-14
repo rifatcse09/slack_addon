@@ -490,7 +490,7 @@ app.shortcut({ callback_id: "send_message"}, async ({ shortcut, ack, context, cl
               },
               "label": {
                 "type": "plain_text",
-                "text": "Label",
+                "text": "公開設定",
                 "emoji": true
               }
             }
