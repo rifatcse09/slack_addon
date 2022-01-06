@@ -60,21 +60,6 @@ async function authInfo(teamId) {
 const authorizeFn = async ({ teamId, enterpriseId }) => {
   // Fetch team info from database
   return await authInfo(teamId);
-  
-    // for (const team of installations) {
-    //   console.log('team = ', team);
-    //   // Check for matching teamId and enterpriseId in the installations array
-    //   if ((team.teamId === teamId)) {
-    //       // This is a match. Use these installation credentials.
-    //       return {
-    //           // You could also set userToken instead
-    //           botToken: team.botToken,
-    //           botId: team.botId,
-    //           botUserId: team.botUserId
-    //       };
-    //   }
-
-    // }
  
   throw new Error('No matching authorizations');
 };
@@ -122,11 +107,7 @@ receiver.app.get('/oauth_redirect', async (req, res) => {
                 hash = crypto.getHashes(); 
                 
                 // Create hash of SHA1 type 
-                //x = "OCBLAB"
-        
-                // 'digest' is the output of hash function containing  
-                // only hexadecimal digits 
-                //hashPwd = crypto.createHash('sha1').update(x).digest('hex'); 
+
                 hashPwd = crypto.randomBytes(20).toString('hex');
                 const created_at = getDateformetJP(new Date());
                
@@ -568,7 +549,7 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   const post_type_view = view['state']['values']['input_d']['post_type']['selected_options'];
   const post_type_view_action = view['state']['values']['input_d']['post_type'];
   var post_type;
- //console.log(view['state'])
+
   console.log('post_type_action',post_type_view_action);
   if (post_type_view.length == 0) {
     post_type = 0;
@@ -625,11 +606,6 @@ app.view('view_1', async ({ ack, body, view, context }) => {
   //Message the user
   const channelId = msg_data['channel']['id'];
   try {
-    // await app.client.chat.postMessage({
-    //  token: context.botToken,
-    //  channel: channelId,
-    //  text: 'Your submission was successful'
-    // });
     await app.client.chat.postEphemeral({
       token: context.botToken,
       attachments:[{}],
