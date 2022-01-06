@@ -1,1 +1,1 @@
-# Shucrew Slack Addon
+# Slack Addon
