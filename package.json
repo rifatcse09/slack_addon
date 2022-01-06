@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Rifat",
   "license": "ISC",
   "dependencies": {
     "@slack/bolt": "^2.4.1",
